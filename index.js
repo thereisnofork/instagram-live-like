@@ -54,8 +54,8 @@ function createHeart(e, img) {
    const x = e.clientX - img_parent_pos.left;
    const y = e.clientY - img_parent_pos.top;
 
-   heart.style.left = `${x + Math.random() * 25}px`;
-   heart.style.top = `${y + Math.random() * 25}px`;
+   heart.style.left = `${x + Math.random() * 25 - Math.random() * 25}px`;
+   heart.style.top = `${y + Math.random() * 25 - Math.random() * 25}px`;
 
    img_parent.appendChild(heart);
 
@@ -77,7 +77,7 @@ function randomScale(heart) {
    heart.animate(
       [
          // keyframes
-         { transform: "translateY(0px) scale(0.3)" },
+         { transform: "translate(-50% ,-50%) scale(0.3)" },
 
          {
             transform: `translateY(${radnomRange1()}px) scale(${radnomRange2()})`,
