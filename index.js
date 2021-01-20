@@ -1,6 +1,6 @@
 const img = document.querySelectorAll(".image");
 const notifBar = document.getElementById("notifBar");
-
+let n = 0;
 const numbers = [
    "first",
    "second",
@@ -14,6 +14,7 @@ const numbers = [
 
 img.forEach((img, idx) => {
    img.addEventListener("dblclick", (e) => {
+      text(img, e.target);
       const interval = setInterval(() => {
          createHeart(e, img);
       }, Math.random() * 250);
@@ -114,4 +115,25 @@ function radnomRange2() {
 }
 function randomOpacity1() {
    return Math.random();
+}
+
+function text(img, e) {
+   if (!img.parentElement.querySelector(".number")) {
+      const liked = document.createElement("div");
+      liked.classList.add("number");
+      img.parentElement.appendChild(liked);
+      liked.innerText = `you liked this image ${1} times`;
+      setTimeout(() => {
+         liked.style.opacity = 0.3;
+      }, 2000);
+   } else {
+      const liked = img.parentElement.querySelector(".number");
+      liked.style.opacity = 1;
+      const num = liked.innerText;
+      const n = +num.match(/\d+/)[0];
+      liked.innerText = `you liked this image ${n + 1} times`;
+      setTimeout(() => {
+         liked.style.opacity = 0.3;
+      }, 2000);
+   }
 }
